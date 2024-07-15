@@ -8,8 +8,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.Constants
 import com.example.a7minutesworkout.R
 import com.example.a7minutesworkout.databinding.ActivityExerciseBinding
+import java.util.ArrayList
 
 class ExerciseActivity : AppCompatActivity() {
 
@@ -20,6 +22,9 @@ class ExerciseActivity : AppCompatActivity() {
 
     private var ExerciseTimer : CountDownTimer? = null
     var ExerciseProgress =0
+
+    var ExerciseList :  ArrayList<ExerciseModel>? = null
+    var currentExercisePosition = -1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,9 +40,13 @@ class ExerciseActivity : AppCompatActivity() {
         if(supportActionBar != null){
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
+
+        ExerciseList = Constants.defaultExerciseList()
+
         binding?.toolbarExercise?.setNavigationOnClickListener{
             onBackPressedDispatcher.onBackPressed()
         }
+
      setRestview()
     }
     fun setRestview(){
@@ -51,7 +60,7 @@ class ExerciseActivity : AppCompatActivity() {
 
     fun setExerciseView(){
 
-        binding?.flProgressBar?.visibility = View.GONE
+        binding?.flProgressBar?.visibility = View.INVISIBLE
         binding?.tvTitle?.text = "Exercise Name"
         binding?.flExerciseView?.visibility = View.VISIBLE
 
@@ -71,6 +80,7 @@ class ExerciseActivity : AppCompatActivity() {
                 binding?.tvTimer?.text = (10-restProgress).toString()
             }
             override fun onFinish() {
+                currentExercisePosition++
              //   Toast.makeText(this@ExerciseActivity,"Exercise will be start",Toast.LENGTH_SHORT).show()
             setExerciseView()
             }
