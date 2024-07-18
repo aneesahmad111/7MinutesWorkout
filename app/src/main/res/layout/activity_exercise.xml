@@ -29,13 +29,13 @@
         android:textColor="@color/colorA"
         android:textStyle="bold"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@id/flProgressBar"
+        app:layout_constraintBottom_toTopOf="@id/flRestView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
 
     <FrameLayout
-        android:id="@+id/flProgressBar"
+        android:id="@+id/flRestView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
@@ -79,12 +79,36 @@
 
         </LinearLayout>
 
-
-
-
-
-
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvUpcomingLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upcoming Exercise"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorP"
+        app:layout_constraintTop_toBottomOf="@id/flRestView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvUpcomingExerciseName"
+        tools:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/tvUpcomingExerciseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorA"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tvUpcomingLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="invisible"/>
+
+
 
     <ImageView
         android:id="@+id/ivImage"
@@ -94,10 +118,10 @@
         android:visibility="invisible"
         android:src="@drawable/ic_jumping_jacks"
         app:layout_constraintTop_toBottomOf="@id/toolbarExercise"
-        app:layout_constraintBottom_toTopOf="@id/tvExercise"/>
+        app:layout_constraintBottom_toTopOf="@id/tvExerciseName"/>
 
     <TextView
-        android:id="@+id/tvExercise"
+        android:id="@+id/tvExerciseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ExerciseName"
@@ -105,10 +129,10 @@
         android:textStyle="bold"
         android:textColor="@color/colorA"
         android:visibility="gone"
-        tools:visibility="invisible"
        app:layout_constraintTop_toBottomOf="@id/ivImage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="invisible"/>
 
 
 
@@ -123,7 +147,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarExercise">
+        app:layout_constraintTop_toBottomOf="@id/tvExerciseName">
 
         <ProgressBar
             android:id="@+id/progress_barExercise"
