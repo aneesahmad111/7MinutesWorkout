@@ -144,7 +144,6 @@
         android:visibility="gone"
         tools:visibility="visible"
         android:background="@drawable/item_color_accent_border"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvExerciseName">
@@ -180,12 +179,14 @@
                 android:textSize="25sp"/>
 
         </LinearLayout>
-
-
-
-
-
-
     </FrameLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/RvExerciseStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/flExerciseView"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
